@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+:root {
+  /* ── ABYSS palette — bioluminescent cyan on void black ─────────────── */
+  --void: #000000;        /* page background — pure black */
+  --abyss: #010305;       /* canvas clear — near-black, faint cool tint */
+  --star-white: #e8eef0;  /* primary text — cool warm-white, never pure #fff */
+  --mute-blue: #9fb4bd;   /* secondary text */
+  --signal: #3fd0c8;      /* THE accent — muted bioluminescent cyan */
+  --biolum-1: #6effd8;    /* rare hot creature glow — green-cyan */
+  --biolum-2: #4ad9ff;    /* rare hot creature glow — ice-cyan */
+  --abyss-gold: #c8a86e;  /* extremely rare archival/signal accent */
+  --muted: #3a4248;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--void);
+  color: var(--star-white);
+  overscroll-behavior: none;
+}
+
+body {
+  background: var(--void);
+  cursor: none;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(63, 208, 200, 0.2);
+  color: var(--star-white);
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
