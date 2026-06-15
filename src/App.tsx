@@ -29,7 +29,7 @@ function zoneFor(s: number) {
 // Module-level singleton so it survives StrictMode's double-mount. Autoplay is
 // gated behind the DESCEND click (a user gesture), satisfying browser policy.
 const MUSIC_VOLUME = 0.55
-const ambience = new Audio('/natureseye-ocean-currents-meditation-161684.mp3')
+const ambience = new Audio('/ambience.m4a')
 ambience.loop = true
 ambience.volume = 0
 let ambienceStarted = false
