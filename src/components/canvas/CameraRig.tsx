@@ -1,6 +1,4 @@
-import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
 import { useMousePosition } from '../../hooks/useMousePosition'
 import { lerp } from '../../lib/env'
 import type { EnvRef } from '../../lib/env'

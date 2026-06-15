@@ -37,7 +37,7 @@ export default function ReturnToSurface({ visible, onClick }: ReturnToSurfacePro
       data-cursor
       style={{
         position: 'fixed',
-        left: '2.2rem',
+        left: 'var(--pad)',
         top: '50%',
         transform: 'translateY(-50%)',
         display: 'flex',

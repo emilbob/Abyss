@@ -34,7 +34,7 @@ export default function DepthHUD({ scrollRef, velRef }: DepthHUDProps) {
   return (
     <>
       {/* Primary metrics — bottom right */}
-      <div style={{ position: 'fixed', bottom: '2.4rem', right: '2.4rem', textAlign: 'right', userSelect: 'none' }}>
+      <div style={{ position: 'fixed', bottom: 'var(--pad)', right: 'var(--pad)', textAlign: 'right', userSelect: 'none' }}>
         <div style={{ ...big }}>
           <span ref={depthRef}>00000 M</span>
         </div>
@@ -62,7 +62,7 @@ export default function DepthHUD({ scrollRef, velRef }: DepthHUDProps) {
       <div
         style={{
           position: 'fixed',
-          right: '2.4rem',
+          right: 'var(--pad)',
           top: '20%',
           height: '46%',
           width: 1,

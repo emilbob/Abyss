@@ -204,7 +204,7 @@ export default function ParticleCreature({
     u.uMouseForce.value = op * 1.0
 
     // Subtle label fades with the creature
-    if (labelRef.current) labelRef.current.style.opacity = String(op * 0.7)
+    if (labelRef.current) labelRef.current.style.opacity = String(op * 0.95)
 
     // Cull the whole draw call while the creature is off-screen — keeps the
     // denser, finer-grained creatures cheap.
@@ -242,11 +242,12 @@ export default function ParticleCreature({
             <div
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.58rem',
+                fontSize: '0.82rem',
                 letterSpacing: '0.3em',
                 color: 'var(--star-white)',
                 textTransform: 'uppercase',
                 paddingLeft: '0.3em',
+                textShadow: '0 0 12px rgba(0,0,0,0.85)',
               }}
             >
               {name}
@@ -256,10 +257,11 @@ export default function ParticleCreature({
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontStyle: 'italic',
-                  fontSize: '0.72rem',
+                  fontSize: '0.92rem',
                   letterSpacing: '0.04em',
                   color: 'var(--mute-blue)',
-                  marginTop: '0.1rem',
+                  marginTop: '0.2rem',
+                  textShadow: '0 0 12px rgba(0,0,0,0.85)',
                 }}
               >
                 {sci}

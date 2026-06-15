@@ -22,9 +22,6 @@ export const ZONES: ZoneDef[] = [
   { id: 7, key: 'floor',      name: 'The Ocean Floor', depth: '11034 M',  start: 0.64 },
 ]
 
-/** ScrollTrigger band edges (start of each zone 2..6) as percentage strings. */
-export const ZONE_STARTS = ZONES.slice(1).map((z) => `${z.start * 100}%`)
-
 // ── Piecewise-linear interpolation of real metrics over scroll ───────────────
 const SCROLL_STOPS = [0, 0.10, 0.21, 0.33, 0.45, 0.55, 0.64, 1.0]
 const DEPTH_STOPS = [0, 200, 1000, 4000, 6000, 11000, 11034, 11034]

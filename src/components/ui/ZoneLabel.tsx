@@ -40,7 +40,7 @@ export default function ZoneLabel({ zone, delay = 0 }: ZoneLabelProps) {
   return (
     <div
       ref={wrapRef}
-      style={{ position: 'fixed', top: '2.4rem', left: '2.4rem', pointerEvents: 'none', userSelect: 'none' }}
+      style={{ position: 'fixed', top: 'var(--pad)', left: 'var(--pad)', pointerEvents: 'none', userSelect: 'none' }}
     >
       <div
         ref={numRef}
@@ -59,7 +59,7 @@ export default function ZoneLabel({ zone, delay = 0 }: ZoneLabelProps) {
         style={{
           fontFamily: 'var(--font-display)',
           fontWeight: 300,
-          fontSize: 'clamp(1.6rem, 3.4vw, 2.8rem)',
+          fontSize: 'clamp(1.3rem, 3.4vw, 2.8rem)',
           letterSpacing: '0.14em',
           color: 'var(--star-white)',
           lineHeight: 1,

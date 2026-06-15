@@ -53,9 +53,33 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   // Reveal the ENTER affordance
   useEffect(() => {
     if (ready && enterRef.current) {
-      gsap.fromTo(enterRef.current, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1.0, ease: 'power2.out' })
+      const btn = enterRef.current
+      gsap.fromTo(btn, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1.0, ease: 'power2.out' })
+      // Gentle attention pulse so it's obvious the button is interactive
+      const pulse = gsap.to(btn, {
+        boxShadow: '0 0 28px rgba(63,208,200,0.55), inset 0 0 18px rgba(63,208,200,0.12)',
+        borderColor: 'rgba(63,208,200,0.9)',
+        repeat: -1,
+        yoyo: true,
+        duration: 1.3,
+        delay: 1.0,
+        ease: 'sine.inOut',
+      })
+      return () => {
+        pulse.kill()
+      }
     }
   }, [ready])
+
+  const handleHover = (entering: boolean) => {
+    if (!enterRef.current) return
+    gsap.to(enterRef.current, {
+      backgroundColor: entering ? 'rgba(63,208,200,0.14)' : 'rgba(63,208,200,0.04)',
+      letterSpacing: entering ? '0.62em' : '0.5em',
+      duration: 0.4,
+      ease: 'power2.out',
+    })
+  }
 
   const handleEnter = () => {
     if (!rootRef.current) return
@@ -86,13 +110,13 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       }}
     >
       {/* Corner coordinates */}
-      <div style={{ ...corner, top: '2rem', left: '2rem' }}>11°22′N 142°35′E</div>
-      <div style={{ ...corner, top: '2rem', right: '2rem' }}>MARIANA TRENCH</div>
-      <div style={{ ...corner, bottom: '2rem', left: '2rem' }}>TARGET −11034 M</div>
-      <div style={{ ...corner, bottom: '2rem', right: '2rem' }}>ABYSS / EXPEDITION 01</div>
+      <div style={{ ...corner, top: 'var(--pad)', left: 'var(--pad)' }}>11°22′N 142°35′E</div>
+      <div style={{ ...corner, top: 'var(--pad)', right: 'var(--pad)' }}>MARIANA TRENCH</div>
+      <div style={{ ...corner, bottom: 'var(--pad)', left: 'var(--pad)' }}>TARGET −11034 M</div>
+      <div style={{ ...corner, bottom: 'var(--pad)', right: 'var(--pad)' }}>ABYSS / EXPEDITION 01</div>
 
       {/* Precision dial */}
-      <svg width="160" height="160" viewBox="0 0 120 120" style={{ overflow: 'visible' }}>
+      <svg width="240" height="240" viewBox="0 0 120 120" style={{ overflow: 'visible' }}>
         {/* tick ring */}
         {Array.from({ length: 60 }).map((_, k) => {
           const a = (k / 60) * Math.PI * 2
@@ -137,24 +161,41 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       />
 
       {ready && (
-        <button
-          ref={enterRef}
-          onClick={handleEnter}
-          data-cursor
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'none',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.95rem',
-            letterSpacing: '0.5em',
-            color: 'var(--star-white)',
-            textTransform: 'uppercase',
-            padding: '0.6rem 0',
-          }}
-        >
-          — DESCEND —
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+          <button
+            ref={enterRef}
+            onClick={handleEnter}
+            onMouseEnter={() => handleHover(true)}
+            onMouseLeave={() => handleHover(false)}
+            data-cursor
+            style={{
+              background: 'rgba(63,208,200,0.04)',
+              border: '1px solid rgba(63,208,200,0.45)',
+              borderRadius: '2px',
+              cursor: 'none',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.95rem',
+              letterSpacing: '0.5em',
+              color: 'var(--star-white)',
+              textTransform: 'uppercase',
+              padding: '0.9rem 2.4rem',
+              boxShadow: '0 0 14px rgba(63,208,200,0.25)',
+            }}
+          >
+            ▾ DESCEND ▾
+          </button>
+          <div
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.66rem',
+              letterSpacing: '0.3em',
+              color: 'rgba(159, 180, 189, 0.55)',
+              textTransform: 'uppercase',
+            }}
+          >
+            Click to enter
+          </div>
+        </div>
       )}
     </div>
   )

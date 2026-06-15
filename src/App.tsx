@@ -179,7 +179,7 @@ export default function App() {
             data-cursor
             style={{
               position: 'fixed',
-              top: '2.4rem',
+              top: 'var(--pad)',
               left: '50%',
               transform: 'translateX(-50%)',
               background: 'none',

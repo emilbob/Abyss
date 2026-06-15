@@ -74,25 +74,38 @@ export default function EndMessage({ scrollRef }: EndMessageProps) {
           ref={btnRef}
           onClick={restart}
           data-cursor
-          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--signal)')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--mute-blue)')}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = 'var(--star-white)'
+            e.currentTarget.style.background = 'rgba(63,208,200,0.14)'
+            e.currentTarget.style.borderColor = 'rgba(63,208,200,0.9)'
+            e.currentTarget.style.letterSpacing = '0.5em'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = 'var(--star-white)'
+            e.currentTarget.style.background = 'rgba(63,208,200,0.04)'
+            e.currentTarget.style.borderColor = 'rgba(63,208,200,0.45)'
+            e.currentTarget.style.letterSpacing = '0.42em'
+          }}
           style={{
             display: 'block',
-            margin: '1.6rem auto 0',
-            background: 'none',
-            border: 'none',
+            margin: '2rem auto 0',
+            background: 'rgba(63,208,200,0.04)',
+            border: '1px solid rgba(63,208,200,0.45)',
+            borderRadius: '2px',
             cursor: 'none',
             pointerEvents: 'none',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.7rem',
+            fontSize: '0.78rem',
             letterSpacing: '0.42em',
-            color: 'var(--mute-blue)',
+            color: 'var(--star-white)',
             textTransform: 'uppercase',
-            paddingLeft: '0.42em',
-            transition: 'color 0.4s ease',
+            padding: '0.8rem 2rem',
+            paddingLeft: 'calc(2rem + 0.42em)',
+            boxShadow: '0 0 14px rgba(63,208,200,0.25)',
+            transition: 'color 0.4s ease, background 0.4s ease, border-color 0.4s ease, letter-spacing 0.4s ease',
           }}
         >
-          End Of Descent ↻
+          Ascend Again ↻
         </button>
       </div>
     </>

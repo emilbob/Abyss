@@ -51,7 +51,7 @@ export default function ScrollIndicator({ delay = 6, hide = false, label = 'Desc
       ref={ref}
       style={{
         position: 'fixed',
-        bottom: '2.8rem',
+        bottom: 'calc(var(--pad) + 0.4rem)',
         left: '50%',
         transform: 'translateX(-50%)',
         display: 'flex',

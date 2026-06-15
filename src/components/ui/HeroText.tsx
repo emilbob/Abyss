@@ -28,7 +28,7 @@ export default function HeroText({ delay = 0, hide = false }: HeroTextProps) {
       { opacity: 1, y: 0, rotateX: 0, duration: 1.6, stagger: 0.07, ease: 'power4.out' },
     )
       .fromTo(rule, { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: 'power3.out' }, '-=0.5')
-      .fromTo(sub, { opacity: 0, y: 10 }, { opacity: 0.7, y: 0, duration: 1.2, ease: 'power2.out' }, '-=0.6')
+      .fromTo(sub, { opacity: 0, y: 10 }, { opacity: 0.92, y: 0, duration: 1.2, ease: 'power2.out' }, '-=0.6')
   }, [delay])
 
   useEffect(() => {
@@ -67,6 +67,7 @@ export default function HeroText({ delay = 0, hide = false }: HeroTextProps) {
           lineHeight: 1,
           display: 'flex',
           paddingLeft: '0.22em',
+          textShadow: '0 0 16px rgba(0,0,0,0.4)',
         }}
       >
         {TITLE.split('').map((c, i) => (
@@ -98,9 +99,10 @@ export default function HeroText({ delay = 0, hide = false }: HeroTextProps) {
           fontFamily: 'var(--font-mono)',
           fontSize: 'clamp(0.6rem, 1.4vw, 0.8rem)',
           letterSpacing: '0.42em',
-          color: 'var(--mute-blue)',
+          color: 'var(--star-white)',
           textTransform: 'uppercase',
           paddingLeft: '0.42em',
+          textShadow: '0 0 12px rgba(0,0,0,0.45)',
         }}
       >
         An Expedition Into The Unknown
